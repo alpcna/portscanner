@@ -7,13 +7,13 @@ if (len(sys.argv) == 4):
     target = socket.gethostbyname(sys.argv[1]) 
     
 else:
-    print("Invalid amount of arguments!")
-    print("Syntax: python3 portscanner.py <ip> <initial port #> <end port #> ")
+    print("Yanlış argüman!")
+    print("Hata ip, başlangıç portu, bitiş portu şeklinde yazın.")
     
 
 print("-" * 50)
-print("Scanning target: " + target)
-print("Time started: " + str(datetime.datetime.now()))
+print("Taranan adres: " + target)
+print("Başlangıç zamanı: " + str(datetime.datetime.now()))
 print("-" * 50) 
 
 try:
@@ -24,10 +24,10 @@ try:
         result = s.connect_ex((target, port)) 
     
         if (result == 0):
-            print(f"Port {port} open")
+            print(f"Port {port} açık")
         
         else:
-            print(f"Port {port} closed")
+            print(f"Port {port} kapalı")
         s.close()    
     
 except KeyboardInterrupt:
@@ -35,10 +35,10 @@ except KeyboardInterrupt:
     sys.exit()
     
 except socket.gaierror:
-    print("The hostname couldn't be resolved.")
+    print("Host adresi çözümlenemedi!")
     sys.exit()
     
 except socket.error:
-    print("Couldn't connect to the server.")
+    print("Sunucuya bağlanılamıyor..!")
     sys.exit()   
     
